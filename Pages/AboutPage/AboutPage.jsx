@@ -11,6 +11,8 @@ export default function AboutPage() {
     const { endTransition } = navigationManagement()
 
     useEffect(() => {
+        document.body.classList.remove('bgc-l')
+        document.body.classList.add('bgc-d')
         endTransition()
     }, [])
 
@@ -65,7 +67,7 @@ export default function AboutPage() {
     }, [])
 
     return (
-        <div className="about-page bgc-d m-ffr">
+        <div className="about-page m-ffr">
             <HomeButton />
             <div className="side-content left-content">
                 <Element3D>

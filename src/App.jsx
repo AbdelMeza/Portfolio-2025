@@ -16,11 +16,13 @@ function App() {
   const { isOpened, changeMenuState } = menuManagement()
   const [windowWidth, setWindowWidth] = useState()
 
-  useEffect(() => {
-    setWindowWidth(window.innerWidth)
-  }, [])
 
-  window.addEventListener('resize', () => setWindowWidth(window.innerWidth))
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     const lenis = new Lenis({

@@ -48,6 +48,10 @@ export default function WorkPage() {
         }
     }
 
+    useEffect(() => {
+        document.body.classList.remove('bgc-d')
+        document.body.classList.add('bgc-l')
+    }, [])
 
     useEffect(() => {
         loadColors()
@@ -96,7 +100,7 @@ export default function WorkPage() {
     }, [position])
 
     return (
-        <div className="work-page bgc-l">
+        <div className="work-page">
             <HomeButton />
 
             <div className="content">

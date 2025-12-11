@@ -1,5 +1,4 @@
 .home-page {
-    background-color: var(--background-light-color);
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -8,7 +7,7 @@
 }
 
 .blocs-container {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -55,6 +54,27 @@
 .navigation-bar .main-informations-container {
     display: flex;
     gap: 50px;
+}
+
+@media screen and (max-width: 700px) {
+    .navigation-bar .main-informations-container {
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navigation-bar {
+        padding: 10vw;
+    }
+
+    .navigation-bar .main-link-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .navigation-bar .main-informations-container {
+        display: none;
+    }
 }
 
 .navigation-bar .main-informations-container .information-container {

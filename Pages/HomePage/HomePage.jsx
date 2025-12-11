@@ -8,6 +8,8 @@ export default function HomePage() {
     const { endTransition } = navigationManagement()
 
     useEffect(() => {
+        document.body.classList.remove('bgc-d')
+        document.body.classList.add('bgc-l')
         endTransition()
     }, [])
 

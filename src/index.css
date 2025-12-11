@@ -29,13 +29,19 @@
 @font-face {
   font-family: 'Main font regular';
   src: url('../Font/main-font/main-font-regular.otf');
-}@font-face {
+}
+
+@font-face {
   font-family: 'Main font bold';
   src: url('../Font/main-font/main-font-bold.otf');
-}@font-face {
+}
+
+@font-face {
   font-family: 'Secondary font';
   src: url('../Font/secondary-font/secondary-font.ttf');
-}@font-face {
+}
+
+@font-face {
   font-family: 'Tertiary font';
   src: url('../Font/tertiary-font/tertiary-font.ttf');
 }
@@ -43,8 +49,10 @@
 body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
-  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 *,
@@ -68,9 +76,13 @@ html {
 
 .b-fs {
   font-size: var(--big-font-size);
-}.m-fs {
+}
+
+.m-fs {
   font-size: var(--medium-font-size);
-}.s-fs {
+}
+
+.s-fs {
   font-size: var(--small-font-size);
 }
 
@@ -78,13 +90,19 @@ html {
 
 .m-ffb {
   font-family: var(--main-font-bold);
-}.m-ffr {
+}
+
+.m-ffr {
   font-family: var(--main-font-regular);
-}.s-ff {
+}
+
+.s-ff {
   font-family: var(--secondary-font);
   font-weight: 700;
   text-transform: uppercase;
-}.t-ff {
+}
+
+.t-ff {
   font-family: var(--tertiary-font);
 }
 
@@ -92,19 +110,31 @@ html {
 
 .bgc-d {
   background-color: var(--background-dark-color);
-}.bgc-l {
+}
+
+.bgc-l {
   background-color: var(--background-light-color);
-}.m-c {
+}
+
+.m-c {
   color: var(--main-color);
-}.mt-dc {
+}
+
+.mt-dc {
   color: var(--main-text-dark-color);
-}.mt-lc {
+}
+
+.mt-lc {
   color: var(--main-text-light-color);
-}.st-dc {
+}
+
+.st-dc {
   color: var(--main-text-dark-color);
   opacity: 0.6;
   transition: opacity var(--animation-short-duration);
-}.st-lc {
+}
+
+.st-lc {
   color: var(--main-text-light-color);
   opacity: 0.6;
   transition: opacity var(--animation-short-duration);
