@@ -1,0 +1,91 @@
+.menu-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+    pointer-events: none;
+
+    &.opened {
+        pointer-events: all;
+    }
+}
+
+.menu-container .menu-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+
+.menu-container .menu-content .menu-link-container {
+    width: calc(100% / 3);
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.menu-container .menu-content .menu-link-container .menu-link {
+    font-size: 3rem;
+    cursor: pointer;
+    line-height: 0.9;
+    transform: translateY(110%);
+    transition: transform var(--animation-short-duration) var(--animation-easing);
+}
+
+@media screen and (max-width: 600px) {
+    .menu-container .menu-content {
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .menu-container .menu-content .menu-link-container {
+        width: max-content;
+    }
+
+    .menu-container .menu-content .menu-link-container .menu-link {
+        transition-delay: 0s !important;
+    }
+
+    .menu-container.opened .menu-content .menu-link-container .menu-link {
+        transition-delay: var(--animation-short-duration) !important;
+    }
+}
+
+.menu-container.opened .menu-content .menu-link-container .menu-link {
+    transform: translateY(0);
+}
+
+.menu-button {
+    position: fixed;
+    bottom: clamp(8vw, 8vw, 20vw);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #fff;
+    mix-blend-mode: difference;
+    transition: gap var(--animation-short-duration) var(--animation-easing),
+        bottom var(--animation-long-duration) var(--animation-easing);
+    user-select: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    z-index: 3;
+}
+
+.menu-button.home-page-style {
+    bottom: clamp(18vh, 20vw, 22vw);
+}
+
+.menu-button.opened {
+    bottom: clamp(8vw, 8vw, 20vw);
+}
+
+.menu-button:hover {
+    gap: 8px;
+}
+
+.menu-button:hover .slide-text {
+    transform: translateY(-100%);
+}

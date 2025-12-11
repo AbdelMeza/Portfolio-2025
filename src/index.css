@@ -1,0 +1,120 @@
+:root {
+  --main-font-bold: 'Main font bold';
+  --main-font-regular: 'Main font regular';
+  --secondary-font: 'Secondary font';
+  --tertiary-font: 'Tertiary font';
+
+  --big-font-size: 1.1rem;
+  --medium-font-size: 0.7rem;
+  --small-font-size: 0.5rem;
+
+  --main-color: #ff3300;
+  --background-dark-color: #121212;
+  --background-light-color: #ccc9c5;
+  --main-text-dark-color: #1b1b1b;
+  --main-text-light-color: #ebe6e6;
+
+  --animation-short-duration: 300ms;
+  --animation-long-duration: 500ms;
+  --animation-easing: cubic-bezier(0.75, 0, 0.25, 1);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/** ---------- Importing fonts ---------- **/
+
+@font-face {
+  font-family: 'Main font regular';
+  src: url('../Font/main-font/main-font-regular.otf');
+}@font-face {
+  font-family: 'Main font bold';
+  src: url('../Font/main-font/main-font-bold.otf');
+}@font-face {
+  font-family: 'Secondary font';
+  src: url('../Font/secondary-font/secondary-font.ttf');
+}@font-face {
+  font-family: 'Tertiary font';
+  src: url('../Font/tertiary-font/tertiary-font.ttf');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  color: inherit;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+html {
+  font-size: clamp(28px, 2.5vw, 100vw);
+}
+
+/** ---------- Setting font sizes ---------- **/
+
+.b-fs {
+  font-size: var(--big-font-size);
+}.m-fs {
+  font-size: var(--medium-font-size);
+}.s-fs {
+  font-size: var(--small-font-size);
+}
+
+/** ---------- Setting font families ---------- **/
+
+.m-ffb {
+  font-family: var(--main-font-bold);
+}.m-ffr {
+  font-family: var(--main-font-regular);
+}.s-ff {
+  font-family: var(--secondary-font);
+  font-weight: 700;
+  text-transform: uppercase;
+}.t-ff {
+  font-family: var(--tertiary-font);
+}
+
+/** ---------- Setting colors ---------- **/
+
+.bgc-d {
+  background-color: var(--background-dark-color);
+}.bgc-l {
+  background-color: var(--background-light-color);
+}.m-c {
+  color: var(--main-color);
+}.mt-dc {
+  color: var(--main-text-dark-color);
+}.mt-lc {
+  color: var(--main-text-light-color);
+}.st-dc {
+  color: var(--main-text-dark-color);
+  opacity: 0.6;
+  transition: opacity var(--animation-short-duration);
+}.st-lc {
+  color: var(--main-text-light-color);
+  opacity: 0.6;
+  transition: opacity var(--animation-short-duration);
+}
+
+/** ---------- Responsive ---------- **/
+
+@media screen and (min-width: 400px) {
+  .st-hover:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+}

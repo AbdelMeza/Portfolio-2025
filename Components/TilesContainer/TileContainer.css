@@ -1,0 +1,27 @@
+.tile-container{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.tile-container .tile{
+    height: 100%;
+    background: #fff;
+    transition: transform var(--animation-long-duration) var(--animation-easing);
+    transform: translateY(100%);
+}
+
+.tile-container.opened, .tile-container.transitioning{
+    pointer-events: all;
+}
+
+.tile-container.opened .tile, .tile-container.transitioning .tile{
+    transform: translateY(0);
+}
+
+.tile-container.opened .tile, .tile-container.transitioning .tile{
+    transform: translateY(0);
+}

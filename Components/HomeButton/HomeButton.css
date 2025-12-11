@@ -1,0 +1,9 @@
+.home-button {
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: clamp(20px, 10vw, 30px);
+    z-index: 1;
+    mix-blend-mode: difference;
+    color: #fff;
+}

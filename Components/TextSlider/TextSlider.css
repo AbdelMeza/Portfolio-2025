@@ -1,0 +1,30 @@
+.text-slider{
+    width: max-content;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.text-slider.s-h{
+    height: var(--small-font-size);
+    
+    *{
+        font-size: var(--small-font-size);
+    }
+}
+
+.text-slider.m-h{
+    height: var(--medium-font-size);
+    
+    *{
+        font-size: var(--medium-font-size);
+    }
+}
+
+.text-slider .slide-text{
+    transition: transform var(--animation-short-duration) var(--animation-easing);
+    display: block;
+}
+
+.text-slider:hover .slide-text{
+    transform: translateY(-100%);
+}
