@@ -32,7 +32,7 @@
     transition: transform var(--animation-short-duration) var(--animation-easing);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 720px) {
     .menu-container .menu-content {
         flex-direction: column;
         justify-content: center;
@@ -58,7 +58,7 @@
 
 .menu-button {
     position: fixed;
-    bottom: clamp(8vw, 8vw, 20vw);
+    bottom: clamp(13vh, 8vw, 20vw);
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -79,7 +79,7 @@
 }
 
 .menu-button.opened {
-    bottom: clamp(8vw, 8vw, 20vw);
+    bottom: clamp(13vh, 8vw, 20vw);
 }
 
 .menu-button:hover {

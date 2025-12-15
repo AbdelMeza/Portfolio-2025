@@ -9,6 +9,7 @@ import menuManagement from '../Stores/menuManagement'
 const HomePage = lazy(() => import("../Pages/HomePage/HomePage"))
 const AboutPage = lazy(() => import("../Pages/AboutPage/AboutPage"))
 const WorkPage = lazy(() => import("../Pages/WorkPage/WorkPage"))
+const ContactPage = lazy(() => import("../Pages/ContactPage/ContactPage"))
 
 function App() {
   const location = useLocation()
@@ -70,17 +71,18 @@ function App() {
       <span>[</span>
       <TextSlider
         size={"s-h"}
-        classGiven={"m-ffb"}
+        classGiven={"m-ffr"}
         firstTextLayer={"menu"}
         secondTextLayer={"menu"}
       />
       <span>]</span>
     </div>
-    <TileContainer tileNumber={windowWidth < 600 ? 2 : 3} />
+    <TileContainer tileNumber={windowWidth < 720 ? 2 : 4} />
     <Routes>
       <Route path="/" element={<HomePage />}></Route>
       <Route path="/about" element={<AboutPage />}></Route>
       <Route path="/work" element={<WorkPage />}></Route>
+      <Route path="/contact" element={<ContactPage />}></Route>
     </Routes>
   </>
 }

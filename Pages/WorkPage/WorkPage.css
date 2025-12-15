@@ -163,7 +163,7 @@
 
 .floating-image-carrousel .image-container .project-image {
     width: 80%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 /* -------------------- Mobile -------------------- */

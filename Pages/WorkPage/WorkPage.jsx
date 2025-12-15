@@ -23,7 +23,7 @@ export default function WorkPage() {
     }, [])
 
     const trackMouse = useCallback((e) => {
-        const posX = 40 + (e.clientX / window.innerWidth) * (60 - 40) //Set a range where the element will be
+        const posX = 40 + (e.clientX / window.innerWidth) * (60 - 40) //Set a range where the element have toz be
         const posY = (e.clientY * 100) / window.innerHeight
 
         setPosition({ x: posX, y: posY })
@@ -51,6 +51,7 @@ export default function WorkPage() {
     useEffect(() => {
         document.body.classList.remove('bgc-d')
         document.body.classList.add('bgc-l')
+        window.scrollTo(0, 0)
     }, [])
 
     useEffect(() => {
@@ -102,10 +103,9 @@ export default function WorkPage() {
     return (
         <div className="work-page">
             <HomeButton />
-
             <div className="content">
                 <span className="m-ffr mt-dc">Creating next-level digital</span>
-                <span className="m-ffr mt-dc">products and experiences</span>
+                <span className="m-ffr mt-dc">products and experiences.</span>
             </div>
             <div className="projects-filter-container">
                 {!isMobile && (

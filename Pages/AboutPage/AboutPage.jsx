@@ -13,6 +13,7 @@ export default function AboutPage() {
     useEffect(() => {
         document.body.classList.remove('bgc-l')
         document.body.classList.add('bgc-d')
+        window.scrollTo(0, 0)
         endTransition()
     }, [])
 
@@ -70,25 +71,6 @@ export default function AboutPage() {
         <div className="about-page m-ffr">
             <HomeButton />
             <div className="side-content left-content">
-                <Element3D>
-                    <div className="about-card">
-                        <div className="gloss"></div>
-                        <div className="upper-content">
-                            <img
-                                src="https://raw.githubusercontent.com/AbdelMeza/Assets/86483d231f7266aeb0339935504fc3bfe610c562/HomeSectionImage/home-s-image.jpg"
-                                alt="profile"
-                                className="profile-image"
-                            />
-                        </div>
-                        <div className="lower-content mt-lc s-fs">
-                            <div className="inner-content">
-                                <span className="st-lc">(profile)</span>
-                                <span>Abdelhak Mezaguer</span>
-                            </div>
-                            <div className="inner-content">Available</div>
-                        </div>
-                    </div>
-                </Element3D>
                 <div className="navigation-container s-fs">
                     <span data-target="introduction" className="navigation-item">introduction</span>
                     <span data-target="informations" className="navigation-item">informations</span>

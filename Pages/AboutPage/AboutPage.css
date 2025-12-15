@@ -27,47 +27,12 @@
     width: 23vw;
     height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .side-content.left-content .element-3d {
     width: clamp(80%, 20vw, 100%);
     max-width: 350px;
-}
-
-/* --- ABOUT CARD --- */
-
-.about-card {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 10px;
-}
-
-.about-card .upper-content {
-    height: clamp(100px, 20vw, 300px);
-}
-
-.about-card .lower-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-top: 10px;
-}
-
-.about-card .profile-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 4px;
-    object-fit: cover;
-}
-
-.about-card .inner-content {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.35rem;
 }
 
 /* --- NAVIGATION --- */

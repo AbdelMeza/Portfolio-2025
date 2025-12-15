@@ -44,13 +44,16 @@ export default function MenuContainer() {
         <div className={`menu-container ${isOpened ? "opened" : ""}`}>
             <div className="menu-content">
                 <div className="menu-link-container">
-                    <span className="menu-link s-ff mt-dc" style={{transitionDelay: `${0.05 * 1.5}s`}} onClick={() => handleTransition('/about')} >about</span>
+                    <span className="menu-link s-ff mt-dc" style={{transitionDelay: `${0.05 * 2}s`}} onClick={() => handleTransition('/')} >home</span>
                 </div>
                 <div className="menu-link-container">
-                    <span className="menu-link s-ff mt-dc" style={{transitionDelay: `${0.05 * 3}s`}} onClick={() => handleTransition('/work')} >work</span>
+                    <span className="menu-link s-ff mt-dc" style={{transitionDelay: `${0.05 * 3.5}s`}} onClick={() => handleTransition('/about')} >about</span>
                 </div>
                 <div className="menu-link-container">
-                    <span className="menu-link s-ff mt-dc" style={{transitionDelay: `${0.05 * 6}s`}} onClick={() => handleTransition('/contact')} >contact</span>
+                    <span className="menu-link s-ff mt-dc" style={{transitionDelay: `${0.05 * 5}s`}} onClick={() => handleTransition('/work')} >work</span>
+                </div>
+                <div className="menu-link-container">
+                    <span className="menu-link s-ff mt-dc" style={{transitionDelay: `${0.05 * 6.5}s`}} onClick={() => handleTransition('/contact')} >contact</span>
                 </div>
             </div>
         </div>
