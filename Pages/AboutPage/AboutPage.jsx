@@ -6,13 +6,14 @@ import socials from "../../Database/socials"
 import navigationManagement from "../../Stores/navigationManagement"
 import { useEffect } from "react"
 import { DevelopementIcon, DesignIcon, InteractionIcon } from "../../Components/ServicesIcons/icons"
+import themeManagement from "../../Stores/themeManagement"
 
 export default function AboutPage() {
     const { endTransition } = navigationManagement()
+    const { setTheme } = themeManagement()
 
     useEffect(() => {
-        document.body.classList.remove('bgc-l')
-        document.body.classList.add('bgc-d')
+        setTheme("dark")
         window.scrollTo(0, 0)
         endTransition()
     }, [])

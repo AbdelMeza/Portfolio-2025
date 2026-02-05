@@ -3,13 +3,14 @@ import navigationManagement from "../../Stores/navigationManagement"
 import HomeButton from "../../Components/HomeButton/HomeButton"
 import './ContactPage.css'
 import TextSlider from "../../Components/TextSlider/TextSlider"
+import themeManagement from "../../Stores/themeManagement"
 
 export default function ContactPage() {
     const { endTransition } = navigationManagement()
+    const { setTheme } = themeManagement()
 
     useEffect(() => {
-        document.body.classList.remove('bgc-l')
-        document.body.classList.add('bgc-d')
+        setTheme("dark")
         window.scrollTo(0, 0)
         endTransition()
     }, [])

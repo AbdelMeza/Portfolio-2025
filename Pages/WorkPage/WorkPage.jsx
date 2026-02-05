@@ -3,6 +3,7 @@ import navigationManagement from '../../Stores/navigationManagement'
 import HomeButton from '../../Components/HomeButton/HomeButton'
 import projects from '../../Database/Projects'
 import './WorkPage.css'
+import themeManagement from '../../Stores/themeManagement'
 
 export default function WorkPage() {
     const { endTransition } = navigationManagement()
@@ -12,6 +13,7 @@ export default function WorkPage() {
     const [activeIndex, setActiveIndex] = useState(0)
     const [position, setPosition] = useState({ x: 0, y: 0 })
     const [isHovering, setHoveringState] = useState(false)
+    const { setTheme } = themeManagement()
 
     const handleResize = useCallback(() => {
         const mobile = window.innerWidth < 750
@@ -49,8 +51,7 @@ export default function WorkPage() {
     }
 
     useEffect(() => {
-        document.body.classList.remove('bgc-d')
-        document.body.classList.add('bgc-l')
+        setTheme("ligth")
         window.scrollTo(0, 0)
     }, [])
 
@@ -165,9 +166,10 @@ export default function WorkPage() {
                             </div>
                             <table className="projects-table">
                                 <colgroup>
-                                    <col width={"65%"}></col>
-                                    <col width={"20%"} style={{ minWidth: "150px" }}></col>
-                                    <col width={"20%"}></col>
+                                    <col width={"50%"}></col>
+                                    <col width={"25%"}></col>
+                                    <col width={"15%"}></col>
+                                    <col width={"10%"}></col>
                                 </colgroup>
                                 <thead className="column-row column-header">
                                     <tr>
@@ -236,7 +238,7 @@ function getDominantColor(imgSrc) {
             let G = Math.round(g / count)
             let B = Math.round(b / count)
 
-            const factor = 0.8
+            const factor = 0.86
             resolve({
                 r: Math.round(R * factor),
                 g: Math.round(G * factor),

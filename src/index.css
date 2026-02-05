@@ -51,6 +51,12 @@ body {
   padding: 0;
 }
 
+body.dark{
+  background-color: var(--background-dark-color);
+}body.ligth{
+  background-color: var(--background-light-color);
+}
+
 body::-webkit-scrollbar {
   display: none;
 }

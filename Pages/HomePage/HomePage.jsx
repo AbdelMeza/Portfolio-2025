@@ -3,13 +3,14 @@ import TextSlider from '../../Components/TextSlider/TextSlider'
 import socials from '../../Database/socials.js'
 import { useEffect, useState } from 'react'
 import navigationManagement from '../../Stores/navigationManagement.jsx'
+import themeManagement from '../../Stores/themeManagement.jsx'
 
 export default function HomePage() {
     const { endTransition } = navigationManagement()
+    const { setTheme } = themeManagement()
 
     useEffect(() => {
-        document.body.classList.remove('bgc-d')
-        document.body.classList.add('bgc-l')
+        setTheme("light")
         endTransition()
     }, [])
 

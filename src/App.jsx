@@ -5,6 +5,7 @@ import MenuContainer from '../Components/MenuContainer/MenuContainer'
 import TileContainer from '../Components/TilesContainer/TileContainer'
 import TextSlider from '../Components/TextSlider/TextSlider'
 import menuManagement from '../Stores/menuManagement'
+import themeManagement from '../Stores/themeManagement'
 
 const HomePage = lazy(() => import("../Pages/HomePage/HomePage"))
 const AboutPage = lazy(() => import("../Pages/AboutPage/AboutPage"))
@@ -15,15 +16,18 @@ function App() {
   const location = useLocation()
   const path = location.pathname
   const { isOpened, changeMenuState } = menuManagement()
+  const { activeTheme } = themeManagement()
   const [windowWidth, setWindowWidth] = useState()
-
-
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth)
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  useEffect(() => {
+    document.body.className = activeTheme
+  }, [activeTheme])
 
   useEffect(() => {
     const lenis = new Lenis({
