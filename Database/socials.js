@@ -1,19 +1,19 @@
 const socials = [
     {
         name: "Github",
-        link: ""
+        link: "https://github.com/AbdelMeza"
     },
     {
         name: "Codepen",
-        link: ""
+        link: "https://codepen.io/abdelhakcode"
     },
     {
         name: "Instagram",
-        link: ""
+        link: "https://instagram.com/abdlllmzz"
     },
     {
         name: "Twitter",
-        link: ""
+        link: "https://x.com/Abdelhakcode"
     },
 ]
 
