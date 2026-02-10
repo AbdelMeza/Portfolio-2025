@@ -10,7 +10,7 @@ export default function HomePage() {
     const { setTheme } = themeManagement()
 
     useEffect(() => {
-        setTheme("light")
+        setTheme("ligth")
         endTransition()
     }, [])
 
@@ -62,6 +62,7 @@ function NavBar() {
                                 type={"link"}
                                 key={index}
                                 redirectTo={social.link}
+                                target={"_blank"}
                                 firstTextLayer={social.name}
                                 secondTextLayer={social.name}
                                 classGiven={"st-dc st-hover"}

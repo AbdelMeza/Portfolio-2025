@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 import './TextSlider.css'
 
-export default function TextSlider({ animate, size, firstTextLayer, secondTextLayer, classGiven, type, redirectTo }) {
+export default function TextSlider({ animate, size, firstTextLayer, secondTextLayer, classGiven, type, redirectTo, target }) {
     const navigate = useNavigate()
 
     function createContent(content) {
         if (type === "link") {
-            return <a className={`slide-text`} href={redirectTo}>{content}</a>
+            return <a className={`slide-text`} href={redirectTo} target={target}>{content}</a>
         } else if (type === "navigate") {
             return <span className={`slide-text`} onClick={() => navigate(redirectTo)}>{content}</span>
         } else{

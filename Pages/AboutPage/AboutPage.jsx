@@ -193,8 +193,9 @@ export default function AboutPage() {
                             <TextSlider
                                 key={index}
                                 size={"m-h"}
-                                type={"navigate"}
-                                redirectTo={"/"}
+                                type={"link"}
+                                redirectTo={social.link}
+                                target={"_blank"}
                                 classGiven={"mt-lc m-fs"}
                                 firstTextLayer={social.name}
                                 secondTextLayer={social.name}
