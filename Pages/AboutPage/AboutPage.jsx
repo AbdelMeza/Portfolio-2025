@@ -19,10 +19,20 @@ export default function AboutPage() {
     }, [])
 
     const getAge = () => {
-        const date = new Date()
-        const currentYear = date.getFullYear()
+        const birthYear = 2005
+        const birthMonth = 5 
+        const birthDay = 8
 
-        return currentYear - 2005
+        const today = new Date()
+        let age = today.getFullYear() - birthYear
+
+        const hasHadBirthdayThisYear =
+            today.getMonth() + 1 > birthMonth ||
+            (today.getMonth() + 1 === birthMonth && today.getDate() >= birthDay)
+
+        if (!hasHadBirthdayThisYear) age--
+
+        return age
     }
 
     useEffect(() => {

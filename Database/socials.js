@@ -13,7 +13,7 @@ const socials = [
     },
     {
         name: "Twitter",
-        link: "https://x.com/abdelhakcode"
+        link: "https://twitter.com/abdelhakcode"
     },
 ]
 
