@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import navigationManagement from "../../Stores/navigationManagement"
 import HomeButton from "../../Components/HomeButton/HomeButton"
 import './ContactPage.css'
@@ -8,6 +8,8 @@ import themeManagement from "../../Stores/themeManagement"
 export default function ContactPage() {
     const { endTransition } = navigationManagement()
     const { setTheme } = themeManagement()
+    const [activeService, setActiveService] = useState([])
+    const [activeTimeframe, setActiveTimeframe] = useState("")
 
     useEffect(() => {
         setTheme("dark")
@@ -52,9 +54,15 @@ export default function ContactPage() {
                     <div className="step-content">
                         <span className="header-text mt-lc">Select the service(s) you're looking for.</span>
                         <div className="services-container">
-                            <div className="service mt-lc">Web developement</div>
-                            <div className="service mt-lc">Web design</div>
-                            <div className="service mt-lc">Web interaction</div>
+                            {["Front-end developement", "Back-end developement", "Web design", "Web interaction"].map((service, index) => (
+                                <div key={index} className={`service mt-lc ${activeService.includes(service) ? 'active' : ''}`} onClick={() => {
+                                    if (activeService.includes(service)) {
+                                        setActiveService(activeService.filter(s => s !== service));
+                                    } else {
+                                        setActiveService([...activeService, service]);
+                                    }
+                                }}>{service}</div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -66,11 +74,9 @@ export default function ContactPage() {
                     <div className="step-content">
                         <span className="header-text mt-lc">Choose the timeframe that fits your project.</span>
                         <div className="timeframes-container">
-                            <div className="service mt-lc">Less than a month</div>
-                            <div className="service mt-lc">1-2 month</div>
-                            <div className="service mt-lc">2-3 month</div>
-                            <div className="service mt-lc">3-6 month</div>
-                            <div className="service mt-lc">More than 6 months</div>
+                            {["Less than a month", "1-2 month", "2-3 month", "3-6 month", "More than 6 months"].map((timeframe, index) => (
+                                <div key={index} className={`timeframe mt-lc ${activeTimeframe.includes(timeframe) ? 'active' : ''}`} onClick={() => setActiveTimeframe(timeframe)}>{timeframe}</div>
+                            ))}
                         </div>
                     </div>
                 </div>

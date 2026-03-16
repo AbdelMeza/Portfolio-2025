@@ -73,10 +73,12 @@
     min-height: 180px;
 }
 
-.form-content .service {
+.form-content .service, .form-content .timeframe {
     padding: 15px;
     border: 1px solid #333;
     cursor: pointer;
+    transition: var(--animation-short-duration) background-color, var(--animation-short-duration) color;
+    user-select: none;
 }
 
 .contact-page .lower-content {
@@ -94,6 +96,11 @@
 
 .contact-page .lower-content .submit-button:hover .slide-text {
     transform: translateY(-100%);
+}
+
+.active{
+    background-color: var(--main-text-light-color);
+    color: var(--main-text-dark-color);
 }
 
 @media screen and (max-width: 700px) {
