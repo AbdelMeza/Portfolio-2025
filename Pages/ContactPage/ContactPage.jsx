@@ -6,13 +6,27 @@ import TextSlider from "../../Components/TextSlider/TextSlider"
 import themeManagement from "../../Stores/themeManagement"
 import emailjs from '@emailjs/browser'
 
+
+const StatusMessage = ({ msg, onExpire }) => {
+    useEffect(() => {
+        const timer = setTimeout(onExpire, 2500)
+        return () => clearTimeout(timer)
+    }, [onExpire])
+
+    return (
+        <div className="m-ffr s-fs status-message mt-lc">
+            {msg.text}
+        </div>
+    )
+}
+
 export default function ContactPage() {
     const { endTransition } = navigationManagement()
     const { setTheme } = themeManagement()
-    
+
     const [activeService, setActiveService] = useState([])
     const [activeTimeframe, setActiveTimeframe] = useState("")
-    const [status, setStatus] = useState([]) 
+    const [status, setStatus] = useState([])
 
     const fullnameRef = useRef()
     const emailRef = useRef()
@@ -26,25 +40,22 @@ export default function ContactPage() {
         endTransition()
     }, [])
 
-    useEffect(() => {
-        if (status.length > 0) {
-            const timer = setTimeout(() => {
-                setStatus((prev) => prev.slice(1))
-            }, 3000) 
-    
-            return () => clearTimeout(timer) 
-        }
-    }, [status])
+    const addStatus = (text) => {
+        const id = Date.now() + Math.random()
+        setStatus((prev) => [...prev, { id, text }])
+    }
 
     const handleSendEmail = (e) => {
         if (e) e.preventDefault()
 
+        if (status.length >= 6) return
+
         if (!fullnameRef.current.value || !emailRef.current.value || activeService.length === 0) {
-            setStatus(["Missing required information"])
+            addStatus("Missing required information")
             return
         }
 
-        setStatus((prev) => [...prev, "Sending message, please wait..."])
+        addStatus("Sending message, please wait...")
 
         const templateParams = {
             fullname: fullnameRef.current.value,
@@ -62,21 +73,20 @@ export default function ContactPage() {
             templateParams,
             import.meta.env.VITE_PUBLIC_KEY
         )
-        .then(() => {
-            setStatus((prev) => [...prev, "Message sent, i'll reach out soon"])
-
-            fullnameRef.current.value = ""
-            emailRef.current.value = ""
-            companyRef.current.value = ""
-            websiteRef.current.value = ""
-            descriptionRef.current.value = ""
-            setActiveService([])
-            setActiveTimeframe("")
-        })
-        .catch((err) => {
-            console.error(err)
-            setStatus((prev) => [...prev, "Something went wrong"])
-        })
+            .then(() => {
+                addStatus("Message sent, i'll reach out soon")
+                fullnameRef.current.value = ""
+                emailRef.current.value = ""
+                companyRef.current.value = ""
+                websiteRef.current.value = ""
+                descriptionRef.current.value = ""
+                setActiveService([])
+                setActiveTimeframe("")
+            })
+            .catch((err) => {
+                console.error(err)
+                addStatus("Something went wrong")
+            })
     }
 
     return (
@@ -86,7 +96,7 @@ export default function ContactPage() {
                 <span className="m-ffr mt-lc">Let's build something</span>
                 <span className="m-ffr mt-lc">Feel free to reach out.</span>
             </div>
-            
+
             <div className="contact-content">
                 <div className="form-container m-ffr s-fs">
                     <div className="form-content general-informations">
@@ -120,9 +130,9 @@ export default function ContactPage() {
                             <span className="header-text mt-lc">Select the service(s) you're looking for.</span>
                             <div className="services-container">
                                 {["Front-end developement", "Back-end developement", "Web design", "Web interaction"].map((service, index) => (
-                                    <div 
-                                        key={index} 
-                                        className={`service mt-lc ${activeService.includes(service) ? 'active' : ''}`} 
+                                    <div
+                                        key={index}
+                                        className={`service mt-lc ${activeService.includes(service) ? 'active' : ''}`}
                                         onClick={() => {
                                             if (activeService.includes(service)) {
                                                 setActiveService(activeService.filter(s => s !== service))
@@ -147,9 +157,9 @@ export default function ContactPage() {
                             <span className="header-text mt-lc">Choose the timeframe that fits your project.</span>
                             <div className="timeframes-container">
                                 {["Less than a month", "1-2 month", "2-3 month", "3-6 month", "More than 6 months"].map((timeframe, index) => (
-                                    <div 
-                                        key={index} 
-                                        className={`timeframe mt-lc ${activeTimeframe === timeframe ? 'active' : ''}`} 
+                                    <div
+                                        key={index}
+                                        className={`timeframe mt-lc ${activeTimeframe === timeframe ? 'active' : ''}`}
                                         onClick={() => setActiveTimeframe(timeframe)}
                                     >
                                         {timeframe}
@@ -181,21 +191,28 @@ export default function ContactPage() {
                         <span className="mt-lc s-fs"><span className="m-c">(*)</span> Required fields</span>
                     </div>
                     <div className="side-content">
-                        <button className="submit-button m-ffr s-fs" onClick={handleSendEmail}>
+                        <button
+                            className={`m-ffr s-fs submit-button ${status.length >= 6 ? 'disabled' : ''}`}
+                            onClick={handleSendEmail}
+                            disabled={status.length >= 6}
+                        >
                             <TextSlider
-                                size={"s-h"}
                                 classGiven={"mt-dc s-fs"}
-                                firstTextLayer={"Submit"}
-                                secondTextLayer={"Submit"}
+                                firstTextLayer={status.length >= 6 ? "Too many requests" : "Submit your projet"}
+                                secondTextLayer={status.length >= 6 ? "Too many requests" : "Submit your projet"}
                             />
                         </button>
                     </div>
                 </div>
                 <div className="form-status-container">
-                    {status?.map((msg, i) => (
-                        <div key={i} className="m-ffr s-fs status-message mt-lc">
-                            {msg}
-                        </div>
+                    {status.map((msg) => (
+                        <StatusMessage
+                            key={msg.id}
+                            msg={msg}
+                            onExpire={() => {
+                                setStatus(prev => prev.filter(item => item.id !== msg.id))
+                            }}
+                        />
                     ))}
                 </div>
             </div>
