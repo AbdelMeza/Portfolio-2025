@@ -34,6 +34,8 @@ export default function ContactPage() {
     const websiteRef = useRef()
     const descriptionRef = useRef()
 
+    const maxStatus = 3
+
     useEffect(() => {
         setTheme("dark")
         window.scrollTo(0, 0)
@@ -48,10 +50,10 @@ export default function ContactPage() {
     const handleSendEmail = (e) => {
         if (e) e.preventDefault()
 
-        if (status.length >= 6) return
+        if (status.length >= maxStatus) return
 
         if (!fullnameRef.current.value || !emailRef.current.value || activeService.length === 0) {
-            addStatus("Missing required information")
+            addStatus("Missing information, please fill all required fields")
             return
         }
 
@@ -192,14 +194,14 @@ export default function ContactPage() {
                     </div>
                     <div className="side-content">
                         <button
-                            className={`m-ffr s-fs submit-button ${status.length >= 6 ? 'disabled' : ''}`}
+                            className="m-ffr s-fs submit-button"
                             onClick={handleSendEmail}
-                            disabled={status.length >= 6}
+                            disabled={status.length >= maxStatus}
                         >
                             <TextSlider
                                 classGiven={"mt-dc s-fs"}
-                                firstTextLayer={status.length >= 6 ? "Too many requests" : "Submit your projet"}
-                                secondTextLayer={status.length >= 6 ? "Too many requests" : "Submit your projet"}
+                                firstTextLayer={status.length >= maxStatus ? "Wait..." : "Submit"}
+                                secondTextLayer={status.length >= maxStatus ? "Wait..." : "Submit"}
                             />
                         </button>
                     </div>

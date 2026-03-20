@@ -65,20 +65,25 @@
     background: none;
     border: 1px solid #333;
     padding: 20px 15px;
+    font-size: var(--small-font-size);
+    border-radius: 8px;
     font-family: var(--main-font-regular);
     color: #fff;
 }
 
 .form-content .textarea-container textarea {
     resize: none;
+    border-radius: 8px;
     min-height: 180px;
 }
 
-.form-content .service, .form-content .timeframe {
+.form-content .service,
+.form-content .timeframe {
     padding: 15px;
     border: 1px solid #333;
+    border-radius: 8px;
     cursor: pointer;
-    transition: var(--animation-short-duration) background-color, var(--animation-short-duration) color;
+    transition: var(--animation-short-duration) opacity;
     user-select: none;
 }
 
@@ -95,43 +100,51 @@
     cursor: pointer;
 }
 
+.contact-page .lower-content .submit-button:disabled{
+    opacity: 0.8;
+}
+
 .contact-page .lower-content .submit-button:hover .slide-text {
     transform: translateY(-100%);
 }
 
-.active{
-    background-color: var(--main-text-light-color);
-    color: var(--main-text-dark-color);
+.contact-page .services-container:has(.active) .service:not(.active),
+.contact-page .timeframes-container:has(.active):has(.active) .timeframe:not(.active) {
+    opacity: 0.2;
 }
 
-.form-status-container{
+.form-status-container {
     position: fixed;
     left: 0;
     bottom: 0;
-    margin: clamp(20px, 3vw, 25px) 5vw; 
+    margin: clamp(20px, 3vw, 25px) 5vw;
     z-index: 100;
+    pointer-events: none;
 }
 
-.form-status-container .status-message{
+.form-status-container .status-message {
     background-color: var(--main-text-light-color);
     color: var(--main-text-dark-color);
     border-radius: 4px;
-    padding: clamp(15px, 3vw, 20px);
+    padding: 20px;
     margin: clamp(4px, 1vw, 6px) 0;
     animation: fading 2.5s forwards;
 }
 
 @keyframes fading {
-    0%{
+    0% {
         opacity: 0;
     }
-    15%{
+
+    15% {
         opacity: 1;
     }
-    85%{
+
+    85% {
         opacity: 1;
     }
-    100%{
+
+    100% {
         opacity: 0;
     }
 }
@@ -139,7 +152,7 @@
 @media screen and (max-width: 700px) {
     .form-content {
         flex-direction: column;
-        min-height: 100vh;
+        min-height: 50vh;
         gap: 15vw;
         padding: 80px 0;
     }
@@ -149,6 +162,19 @@
     }
 
     .form-content .step-content {
+        width: 100%;
+    }
+
+    .form-status-container {
+        top: 0;
+        right: 0;
+        bottom: auto;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .form-status-container .status-message {
         width: 100%;
     }
 }
