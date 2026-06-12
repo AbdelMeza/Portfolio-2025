@@ -1,8 +1,24 @@
 const projects = [
     {
+        projectTitle: "GitPulse - GitHub Performance Tracker",
+        projectImage: "https://raw.githubusercontent.com/AbdelMeza/Assets/main/Projects/gitpulse.png",
+        creactionDate: "2026/06/09",
+        services: "development & design & conception",
+        link: "https://github.com/AbdelMeza/GitPulse",
+        client: "Personal work",
+    },
+    {
+        projectTitle: "Chat app",
+        projectImage: "https://raw.githubusercontent.com/AbdelMeza/Assets/main/Projects/chat-app.png",
+        creactionDate: "2026/04/20",
+        services: "development & design & conception",
+        link: "https://github.com/AbdelMeza/WebSocket-Chat-App-React-TypeScript-",
+        client: "Personal work",
+    },
+    {
         projectTitle: "Planify AI",
         projectImage: "https://raw.githubusercontent.com/AbdelMeza/Assets/c44d34a95b143065e6ac7762246c428183c94baa/Projects/Planify-ai.png",
-        creactionDate: "2025/02/04",
+        creactionDate: "2026/02/04",
         services: "development & design & conception",
         link: "https://github.com/AbdelMeza/Planify-AI",
         client: "Personal work",
